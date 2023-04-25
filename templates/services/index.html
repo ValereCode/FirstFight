@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+            <div class="row">
+                {% for accueil in accueil %}
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    <div class="card">
+
+                        {% if accueil.image %}
+                      
+                        <img style="height: 290px" class="card-img-top" src="{{ accueil.image.url }}" alt="image {{ accueil.code}}">
+                      
+                        {% else %}
+                      
+                        <h4>Pas d'image</h4>
+                      
+                        {% endif %}
+                      
+                        <div class="card-body">
+                          <p class="card-text">
+                            <strong style="color: black; text-transform: capitalize; font-size: large;">Session:</strong> {{ accueil.code }} <br> 
+                            <strong style="color: black; text-transform: capitalize; font-size: large;">Détails:</strong> {{ accueil.detail }} </p>
+                        
+                        {% if accueil.ide == 1 %}
+                        <a href="{% url 'services:terrain' %}" class="contacter">Consulter la session</a>
+
+                        {% elif accueil.ide == 2 %}
+                        <a href="{% url 'services:voiture' %}" class="contacter">Consulter la session</a>
+
+                        {% elif accueil.ide == 3 %}
+                        <a href="{% url 'services:maison' %}" class="contacter">Consulter la session</a>
+
+                        {% elif accueil.ide == 4 %}
+                        <a href="{% url 'services:habit' %}" class="contacter">Consulter la session</a>
+
+                        {% elif accueil.ide == 5 %}
+                        <a href="{% url 'services:tissu' %}" class="contacter">Consulter la session</a>
+                        
+                        {% endif %}
+
+                      </div>
+                      </div>
+                </div>             
+                
+                {% endfor %}
+            </div>
+        {% endblock %}  

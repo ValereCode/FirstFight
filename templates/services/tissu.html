@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+            <div class="row">
+                {% for tissu in tissu %}
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                  <div class="card">
+                        {% if tissu.image %}
+                        <img class="card-img-top" src="{{ tissu.image.url }}" alt="image {{ tissu.code}}">
+                        {% else %}
+                            <h4>Pas d'image</h4>
+                        {% endif %}
+                        <div class="card-body">
+                          <p class="card-text">
+                            <strong style="color: black; text-transform: none; font-size: large; font-weight: normal;">Code tissu:</strong> {{ tissu.code }} <br> 
+                            <strong style="color: black; text-transform: capitalize; font-size: large; font-weight: normal">Caractéristiques:</strong> {{ tissu.caracteristique }} </p>
+                          <a href="{% url 'services:contacter' %}" class="contacter">Contacter</a>
+                        </div>
+                      </div>
+                </div>             
+                
+                {% endfor %}
+            </div>
+        {% endblock %}  
+  

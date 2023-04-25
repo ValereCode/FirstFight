@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+
+    <style>
+        
+        .corps{
+            padding: 10px;
+            padding-top: 4%;
+            background-color: burlywood;
+            width: fit-content;
+        }
+
+        .titre{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: black;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 2%;
+        }
+
+        .nom{
+            text-align: center;
+            margin-top: 28px;
+            height: 50px;
+            width: 500px;
+            font-size: 18px;
+            font-family: Cambria;
+            border-radius: 25px;
+            border: none;
+            color: black;
+        }
+
+        .email{
+            width: 500px;
+            text-align: center;
+            margin-top: 33px;
+            height: 50px;
+            font-size: 18px;
+            font-family: Cambria;
+            border-radius: 25px;
+            border: none;
+            color: black;
+        }
+
+        .telephone{
+            text-align: center;
+            margin-top: 33px;
+            height: 50px;
+            width: 500px;
+            font-size: 18px;
+            font-family: Cambria;
+            border-radius: 25px;
+            border: none;
+            color: black;
+        }
+
+        .message{
+            text-align: center;
+            width: 500px;
+            margin-top: 33px;
+            padding-top: 8px;
+            height: 70px;
+            font-size: 18px;
+            font-family: Cambria;
+            border-radius: 25px;
+            border: none;
+            color: black;
+        }
+
+        .code_produit{
+            width: 500px;
+            text-align: center;
+            margin-top: 33px;
+            height: 50px;
+            font-size: 18px;
+            font-family: Cambria;
+            border-radius: 25px;
+            border: none;
+            color: black;
+        }
+
+        .envoyer{
+            margin-top: 5px;
+            height: 50px;
+            font-size: 20px;
+            width: 500px;
+            color: white;
+            background-color: black;
+            opacity: 0.7;
+            font-family: Cambria;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .envoyer:hover{
+            background-color: black;
+            opacity: 1;
+        }
+
+      
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            opacity: 1; /* Firefox */
+            font-family: Cambria;
+            color: black
+        }
+
+        .reponse{
+            color: white;
+            font-family: Cambria;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .numero{
+            color:  white;
+        }
+        .numero:hover{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
+        <div class="corps container">
+            <div>
+                <p style="text-align: center; font-size: 20px; font-family: Cambria;">
+                    Vous pouvez nous appeler directement sur les numéros de téléphone suivants:<br><a class="numero" href="tel:+22898418787" style="font-weight: bold;">98 41 87 87</a> ou <a class="numero" style="font-weight: bold;" href="tel:+22891442952">91 44 29 52</a>
+                    <br>Ou alors... <br> Veuillez remplir le formulaire de contact ci-dessous.</p>
+            </div>
+            <section class="form">
+                <p class="reponse">{{ message }}</p>
+                <center>
+                    <form class="fond_form" method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="envoyer"> Soumettre </button>
+                    </form>
+                </center>
+            </section>    
+        </div>
+
+    {% endblock %}
